@@ -1,0 +1,14 @@
+.btn {
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  color: var(--color-light);
+  background-color: var(--color-dark);
+  cursor: pointer;
+}
+
+.btn.disable {
+  filter: grayscale(100%);
+  background-color: #ccc;
+  pointer-events: none;
+}

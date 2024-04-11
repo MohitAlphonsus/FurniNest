@@ -1,0 +1,116 @@
+.details {
+  padding: 2rem 5%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media(max-width:900px) {
+  .details {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mainImage {
+  background-size: cover;
+  width: 25rem;
+  height: 30rem;
+  border-radius: 5px;
+}
+
+.otherImages {
+  display: flex;
+  gap: 2rem;
+}
+
+.image {
+  height: 8rem;
+  width: 8rem;
+  border-radius: 5px;
+  background-size: cover;
+  cursor: pointer;
+  transition: scale .2s ease-in-out;
+}
+
+.image:hover {
+  scale: 1.1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.content h4 {
+  font-size: 3rem;
+}
+
+.content p {
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.content .misc {
+  display: flex;
+  gap: 1rem;
+}
+
+.content .inBox {
+  display: flex;
+}
+
+
+.content .misc span {
+  display: inline-block;
+  border: 1px solid #cecece;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #7c7c7c;
+  font-size: 1.2rem;
+}
+
+.content .misc span:not(:last-child) {
+  border-right: none;
+}
+
+.content .price {
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.content .counter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.6rem;
+}
+
+.content .counter button {
+  border: none;
+  border-radius: 50%;
+  height: 4rem;
+  width: 4rem;
+  cursor: pointer;
+  font: inherit;
+  font-size: 2rem;
+  transition-property: background-color color;
+  transition-duration: .3s;
+  transition-timing-function: ease-in-out;
+}
+
+.content .counter button:hover,
+.content .counter button:active {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}

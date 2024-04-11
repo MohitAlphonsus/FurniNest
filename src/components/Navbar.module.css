@@ -1,0 +1,48 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 5%;
+  color: var(--color-dark);
+}
+
+.logo {
+  font-size: 4rem;
+  color: inherit;
+}
+
+.link-list {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  list-style-type: none;
+}
+
+.link {
+  color: inherit;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.nav-link-icon {
+  font-size: 2.5rem;
+}
+
+.link span {
+  position: absolute;
+  top: -1.5rem;
+  right: -1rem;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  font-size: 1.2rem;
+}

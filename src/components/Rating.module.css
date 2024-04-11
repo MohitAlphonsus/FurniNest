@@ -1,0 +1,16 @@
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stars span {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.icon {
+  fill: #c45500;
+  height: 1.6rem;
+  width: 1.6rem;
+}
