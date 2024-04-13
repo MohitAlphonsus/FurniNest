@@ -1,0 +1,32 @@
+.totalPrice {
+  padding: 2rem;
+  background-color: #eee;
+  border-radius: 9px;
+  height: max-content;
+}
+
+h3 {
+  font-size: 2.4rem;
+  padding-bottom: 1.8rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.group {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+.group span {
+  display: inline-block;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  color: #555;
+  font-weight: bold;
+}
+
+.btnCheckout {
+  width: 100%;
+  margin-top: 1.8rem;
+}

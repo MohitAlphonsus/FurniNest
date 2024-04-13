@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../components';
 import styles from './ShopItem.module.css';
 
 function ShopItem({ imageSrc, name, price, itemId }) {
@@ -19,7 +18,6 @@ function ShopItem({ imageSrc, name, price, itemId }) {
 			<div className={styles['shop-item-content']}>
 				<h4>{name}</h4>
 				<span>{price}&#8377;</span>
-				<Button>Add to cart</Button>
 			</div>
 		</div>
 	);

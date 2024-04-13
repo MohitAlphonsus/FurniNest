@@ -7,6 +7,7 @@ const fromLocalStorage = JSON.parse(localStorage.getItem('cartItems')) || [];
 const initialState = {
 	cart: fromLocalStorage,
 	count: 0,
+	subTotal: 0,
 };
 
 function reducer(state, action) {
@@ -49,9 +50,10 @@ function reducer(state, action) {
 			};
 		case 'UPDATE_DECREASING_QUANTITY': {
 			const { cartId, quantity } = action.payload;
+			const newQuantity = quantity - 1;
+			const filteredCart = state.cart.filter(item => item.id !== cartId);
 			const updatedCart = state.cart.map(item => {
 				if (item.id === cartId) {
-					const newQuantity = quantity - 1;
 					const newTotalPrice = item.price * newQuantity;
 					return {
 						...item,
@@ -61,7 +63,8 @@ function reducer(state, action) {
 				}
 				return item;
 			});
-			return { ...state, cart: updatedCart };
+
+			return { ...state, cart: newQuantity === 0 ? filteredCart : updatedCart };
 		}
 		case 'UPDATE_INCREASING_QUANTITY': {
 			const { cartId, quantity } = action.payload;
@@ -77,6 +80,12 @@ function reducer(state, action) {
 				}
 				return item;
 			});
+			return { ...state, cart: updatedCart };
+		}
+		case 'REMOVE_FROM_CART': {
+			const { cartId } = action.payload;
+			const updatedCart = state.cart.filter(item => item.id !== cartId);
+
 			return { ...state, cart: updatedCart };
 		}
 	}
