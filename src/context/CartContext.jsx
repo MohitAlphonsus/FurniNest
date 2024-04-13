@@ -13,29 +13,34 @@ function reducer(state, action) {
 	switch (action.type) {
 		case 'ADD_TO_CART': {
 			const { item } = action.payload;
+			const productPrice = item.price * item.quantity;
 			const existingItemIndex = state.cart.findIndex(
 				cartItem => cartItem.id === item.id,
 			);
 			if (existingItemIndex >= 0) {
 				const updatedCart = state.cart.map((cartItem, index) => {
 					if (index === existingItemIndex) {
+						const newQuantity = cartItem.quantity + item.quantity;
+						const newProductPrice = cartItem.price * newQuantity;
 						return {
 							...cartItem,
-							quantity: cartItem.quantity + item.quantity,
+							quantity: newQuantity,
+							totalProductPrice: newProductPrice,
 						};
 					}
 					return cartItem;
 				});
 				return { ...state, cart: updatedCart };
 			} else {
-				return { ...state, cart: [...state.cart, item] };
+				const newItem = { ...item, totalProductPrice: productPrice };
+				return { ...state, cart: [...state.cart, newItem] };
 			}
 		}
 
 		case 'DECREMENT':
 			return {
 				...state,
-				count: state.count > 1 ? state.count - 1 : 1,
+				count: state.count > 1 ? state.count - 1 : 0,
 			};
 		case 'INCREMENT':
 			return {
@@ -46,9 +51,12 @@ function reducer(state, action) {
 			const { cartId, quantity } = action.payload;
 			const updatedCart = state.cart.map(item => {
 				if (item.id === cartId) {
+					const newQuantity = quantity - 1;
+					const newTotalPrice = item.price * newQuantity;
 					return {
 						...item,
-						quantity: quantity - 1,
+						quantity: newQuantity,
+						totalProductPrice: newTotalPrice,
 					};
 				}
 				return item;
@@ -59,9 +67,12 @@ function reducer(state, action) {
 			const { cartId, quantity } = action.payload;
 			const updatedCart = state.cart.map(item => {
 				if (item.id === cartId) {
+					const newQuantity = quantity + 1;
+					const newTotalPrice = item.price * newQuantity;
 					return {
 						...item,
-						quantity: quantity + 1,
+						quantity: newQuantity,
+						totalProductPrice: newTotalPrice,
 					};
 				}
 				return item;

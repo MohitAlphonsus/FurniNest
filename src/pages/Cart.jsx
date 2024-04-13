@@ -37,6 +37,7 @@ function Cart() {
 								<h4 className={styles.title}>{item.name}</h4>
 								<div className={styles.stockPrice}>
 									<span>{item.price}&#8377;</span>
+
 									<span>In Stock</span>
 								</div>
 								<div className={styles.actions}>
@@ -53,6 +54,9 @@ function Cart() {
 										<HiOutlineTrash className={styles.icon} />
 										<span>delete</span>
 									</button>
+									<span className={styles.productTotalPrice}>
+										{item.totalProductPrice}&#8377;
+									</span>
 								</div>
 							</div>
 						</div>
