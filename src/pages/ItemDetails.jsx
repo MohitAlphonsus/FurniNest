@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Button, Rating } from '../components';
+import { Button, Counter, Rating } from '../components';
 import { furnitureData } from '../../data/furniture-data';
 
 import styles from './ItemDetails.module.css';
@@ -11,16 +11,15 @@ function ItemDetails() {
 	const { itemId } = useParams();
 	const { description, images, inTheBox, itemWeigth, name, price, rating } =
 		furnitureData.filter(furniture => furniture.id === itemId)[0];
-
 	const [imageSrc, setImageSrc] = useState(images[0].imgSrc);
-	const { count, setCount, cart, setCart } = useCart();
 
+	const { count, dispatch } = useCart();
 	function countDecrementHandler() {
-		if (count === 0) return;
-		setCount(prevCount => prevCount - 1);
+		dispatch({ type: 'DECREMENT' });
 	}
+
 	function countIncrementHandler() {
-		setCount(prevCount => prevCount + 1);
+		dispatch({ type: 'INCREMENT' });
 	}
 
 	function addToCartHandler() {
@@ -31,21 +30,7 @@ function ItemDetails() {
 			price,
 			quantity: count,
 		};
-
-		const existingItem = cart.some(item => item.id === itemId);
-
-		if (!existingItem) {
-			setCart([...cart, cartItem]);
-		} else {
-			setCart(prevCart =>
-				prevCart.map(item => {
-					if (item.id === cartItem.id) {
-						return { ...cartItem, quantity: cartItem.quantity + item.quantity };
-					}
-					return cartItem;
-				}),
-			);
-		}
+		dispatch({ type: 'ADD_TO_CART', payload: { item: cartItem } });
 	}
 
 	return (
@@ -81,11 +66,11 @@ function ItemDetails() {
 					<span>{itemWeigth}</span>
 				</div>
 				<span className={styles.price}>{price}&#8377;</span>
-				<div className={styles.counter}>
-					<button onClick={countDecrementHandler}>-</button>
-					<span>{count}</span>
-					<button onClick={countIncrementHandler}>+</button>
-				</div>
+				<Counter
+					onDecrement={countDecrementHandler}
+					onIncrement={countIncrementHandler}
+					quantity={count}
+				/>
 				<Button onClick={addToCartHandler} disabled={count === 0}>
 					Add To Cart
 				</Button>

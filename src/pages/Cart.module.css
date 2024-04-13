@@ -1,0 +1,88 @@
+.cart {
+  padding: 2rem 10%;
+}
+
+.cart h2 {
+  font-size: 4rem;
+}
+
+.cartItems {}
+
+.cartItem {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 2rem 0;
+
+  display: flex;
+  gap: 4rem;
+}
+
+@media(max-width:750px) {
+  .cartItem {
+    flex-direction: column;
+  }
+}
+
+.cartItemImg {
+  height: 15rem;
+  width: 12rem;
+  border-radius: 9px;
+  background-size: cover;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.stockPrice span {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.stockPrice span:first-child {
+  padding-left: 0;
+}
+
+.stockPrice span:last-child {}
+
+.stockPrice span:not(:last-child) {
+  border-right: 1px solid #ccc;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions .delete {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font: inherit;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color .3s ease-in-out;
+}
+
+.actions .delete:hover {
+  color: rgb(226, 93, 93);
+}
+
+.actions .delete .icon {
+  font-size: 1.8rem;
+}

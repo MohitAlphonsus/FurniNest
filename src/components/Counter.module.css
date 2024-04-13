@@ -1,0 +1,25 @@
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.6rem;
+}
+
+.counter button {
+  border: none;
+  border-radius: 50%;
+  height: 4rem;
+  width: 4rem;
+  cursor: pointer;
+  font: inherit;
+  font-size: 2rem;
+  transition-property: background-color color;
+  transition-duration: .3s;
+  transition-timing-function: ease-in-out;
+}
+
+.counter button:hover,
+.counter button:active {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
